@@ -1,0 +1,95 @@
+Guide: Openssl in XAMPP
+
+Prerequisite: There is normally no need to install openssl (it comes bundled with Xampp). Apache 2.4.9 includes 1.0.1g for instance.
+
+openssl folder structure:
+
+In C:\Xampp\bin\apache\apache#.#.#\conf create the following folder structure:
+
+..
+demoCA
+|-----certs
+|-----crl
+|-----newcerts
+|-----private
+
+
+Creating the certificate:
+
+set OPENSSL_CONF=C:\xampp\apache\bin\openssl.cnf   
+
+
+From command line browse to C:\Xampp\bin\apache\apache#.#.#\bin\ 
+
+"openssl req -new -out cacert.csr -keyout cacert.pem". 
+
+
+If prompted enter a password and after that the DN informations like below.
+
+Loading 'screen' into random state - done
+Generating a 1024 bit RSA private key
+.......................++++++
+....++++++
+writing new private key to 'cacert.pem'
+Enter PEM pass phrase: my_secret_pass
+Verifying - Enter PEM pass phrase: my_secret_pass
+`-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+`-----
+Country Name (2 letter code) []:
+State or Province Name (full name) []:
+Locality Name (eg, city) []:
+Organization Name (eg, company) []:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:local
+Email Address []:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+
+C:\Xampp\bin\apache\apache2.4.9\bin>
+
+In the same console window now use:
+
+ "openssl rsa -in cacert.pem -out cacert.key" 
+ 
+and if asked enter the password previously entered.
+
+Enter pass phrase for cacert.pem: my_secret_pass
+writing RSA key
+
+Still in the same window call:
+
+"openssl x509 -in cacert.csr -out cacert.cert -req -signkey cacert.key -days 365". 
+
+ If you experience the following error "unable to write 'random state'". This is a known bug! To workaround this call "set RANDFILE=.rnd" and retry the previous command.
+
+Congrats you are now the owner of a self signed certificate!
+
+Place the built files (they are currently in bin folder) according this Site:
+
+cacert.pem, cacert.key in C:\Xampp\bin\apache\apache#.#.#\conf\demoCA\private
+cacert.cert, cacert.csr in C:\Xampp\bin\apache\apache#.#.#\conf\demoCA\certs
+
+
+Now test your Apache installation by calling "httpd -t"
+
+
+It will say "Syntax OK
+
+
+Xampp is now configured with https support
+ 
+You can check now your server status here
+
+https://localhost/server-status/
+
+Copy the .htaccess file to the root of your website.
+
