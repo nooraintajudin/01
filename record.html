@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="cs" />
+    <meta name="robots" content="all,follow" />
+
+    <meta name="author" content="All: ... [Nazev webu - www.url.cz]; e-mail: info@url.cz" />
+    <meta name="copyright" content="Design/Code: Vit Dlouhy [Nuvio - www.nuvio.cz]; e-mail: vit.dlouhy@nuvio.cz" />
+    
+    <title>Sistem Pemilihan Ubat Berdasarkan Diagnosis PPAT</title>
+    <meta name="description" content="..." />
+    <meta name="keywords" content="..." />
+    
+    <link rel="index" href="./" title="Home" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="./css/print.css" />
+    <link rel="stylesheet" media="aural" type="text/css" href="./css/aural.css" />
+</head>
+
+<body id="www-url-cz">
+
+<!-- Main -->
+<div id="main" class="box">
+
+    <!-- Header -->
+    <div id="header">
+
+        <!-- Logotyp -->
+        <h1 id="logo"><a>Sistem Pemilihan Ubat Berdasarkan Diagnosis PPAT<span></span></a></h1>
+        <hr class="noscreen" />          
+
+    </div> <!-- /header -->
+
+     <!-- Main menu (tabs) -->
+     <div id="tabs" class="noprint">
+
+            <h3 class="noscreen">Navigation</h3>
+            <ul class="box">
+                <li><a href="index.html">Laman Utama<span class="tab-l"></span><span class="tab-r"></span></a></li>
+				<li><a href="record.html">Rekod Pesakit<span class="tab-l"></span><span class="tab-r"></span></a></li>
+				<li><a href="result2_peg.html">Diagnosis<span class="tab-l"></span><span class="tab-r"></span></a></li>
+				<li><a href="detail.php">Detail<span class="tab-l"></span><span class="tab-r"></span></a></li>
+                <li><a href="main_peg.php">Keluar<span class="tab-l"></span><span class="tab-r"></span></a></li>
+            </ul>
+
+        <hr class="noscreen" />
+     </div> <!-- /tabs -->
+
+    <!-- Page (2 columns) -->
+    <div id="page" class="box">
+    <div id="page-in" class="box">
+
+        <div id="strip" class="box noprint">
+
+
+            <!-- Breadcrumbs -->
+            <p id="breadcrumbs">Anda disini: <a>Laman Rekod Pemeriksaan Pesakit <?=$_SESSION['sess_user'];?></a></p>
+            <hr class="noscreen" />
+            
+        </div> <!-- /strip -->
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Article -->
+            <div class="article">
+                <h2><span><a>Rekod Pemeriksaan Pesakit</a></span></h2>
+				
+				
+		<p>*Jika Diastolic >90-100mmHg:
+		
+		Rujuk pesakit ke hospital yang berdekatan.</p>
+		
+		<form action="record.php" method="post">
+			<table>
+			<tr>
+				<td>NO.TENTERA:</td>
+				<td><input type="text" name="no_tentera"></td>
+			</tr>
+			<tr>
+				<td>NAMA:</td>
+				<td><input type="text" name="nama"></td>
+			</tr>
+			
+			<tr>
+				<td>TARIKH LAHIR:</td>
+				 <td><input type="text" name="tarikh_lahir"></td>
+			</tr>
+			<tr>
+				<td>JENIS DARAH:</td>
+				<td><input type="text" name="jenis_darah"></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>TINGGI(cm):</td>
+				<td><input type="text" name="tinggi"></td>
+			</tr>
+			<tr>
+				<td>BERAT(kg):</td>
+				<td><input type="text" name="berat"></td>
+			</tr>
+			<tr>
+				<td>JANTINA:</td>
+				<td><input type="text" name="jantina"></td>
+			</tr>
+			<tr>
+				<td>TARIKH:</td>
+				 <td><input type="text" name="tarikh"></td>
+			</tr>
+			<tr>
+				<td>BP(mmHg):</td>
+				<td><input type="text" name="bp"></td>
+			</tr>
+			<tr>
+				<td>PULSE(bpm):</td>
+				<td><input type="text" name="pulse"></td>
+			</tr>
+			<tr>
+				<td>PR(rpm):</td>
+				<td><input type="text" name="pr"></td>
+			</tr>
+			<tr>
+				<td>SUHU(celcius):</td>
+				<td><input type="text" name="suhu"></td>
+			</tr>
+			<tr>
+				<td>DIAGNOSA:</td>
+				<td>
+					<select name="diagnosa">
+						<option value="DEMAM">DEMAM</option>
+						<option value="CIRIT BIRIT">CIRIT BIRIT</option>
+						<option value="SELSEMA">SELSEMA</option>
+						<option value="SAKIT KEPALA">SAKIT KEPALA</option>
+						<option value="BATUK">BATUK</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>JENIS UBAT:</td>
+				<td>
+				<div class="checkbox">
+                <label>
+                <input type="checkbox" name="jenis_ubat[]" value="124 " />124 - TAB. PARACETAMOL(PANADOL)1000MG TDS
+				</label>
+				</div>
+				<div class="checkbox">
+                <label>
+                <input type="checkbox" name="jenis_ubat[]" value="125 " />125 - TAB. PARACETAMOL 500MG TDS
+				</label>
+				</div>
+				<div class="checkbox">
+                <label>
+                <input type="checkbox" name="jenis_ubat[]" value="126 " />126 - SY. PARACETAMOL 5ML TDS
+				</label>
+				</div>
+				<div class="checkbox">
+                <label>
+                <input type="checkbox" name="jenis_ubat[]" value="127 " />127 - SY. PARACETAMOL 2.5ML TDS
+				</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="152 " />152 - TAB. ATROPINE SULPHATE 2.5MG TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="153 " />153 - DIPHENOXYLATE HCL(LOMOTIL)2.5MG TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="154 " />154 - ORS 1/1 3 PACKET PRN
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="185 " />185 - TAB. CHLORPHENIRAMINEN MALEATE 4MG TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="186 " />186 - SY. CHLORPHENIRAMINEN MALEATE 5ML TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="187 " />187 - SY. CHLORPHENIRAMINEN MALEATE 2.5ML TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="238 " />238 - CAP. MEFENAMIC ACID 250MG TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="239 " />239 - PAIN KILLER
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="240 " />240 - SEVERE HEADACHE
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="486 " />486 - EKSP. DIPHENHYDRAMINE HCL 10ML TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="487 " />487 - EKSP. DIPHENHYDRAMINE HCL 5ML TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="488 " />488 - EKSP. DIPHENHYDRAMINE HCL 2.5ML TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="489 " />489 - TAB. BROMHEXINE (BISOLVON) 8MG TDS
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="880 " />880 - TAB. BACAMPICILLINE(PENGLOBE) 400MG BD
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+					<input type="checkbox" name="jenis_ubat[]" value="990 " />990 - SUSP. AMPICILLINE 125MG/5ML BD
+					</label>
+				</div>
+				</td>
+			<tr>
+				<td>KUANTITI(doz):</td>
+				<td>
+				<select name="kuantiti">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="1">4</option>
+						<option value="2">5</option>
+				</select>
+
+				</td>
+			</tr>
+			</tr>
+			</table>
+			<input type="submit" name="search" value="search">
+			<input type="submit" name="submit1" value="insert">
+		</form>
+  
+               
+            </div> <!-- /article -->
+
+            <hr class="noscreen" />
+
+            
+            
+        </div> <!-- /content -->
+
+        <!-- Right column -->
+        <div id="col" class="noprint">
+            <div id="col-in">
+
+                <hr class="noscreen" />
+
+                <!-- Links -->
+                
+				<tr>
+				<td colspan=15>
+				<img src="images/Slice11.gif" width=185 height=240></td>
+				</tr>
+            
+            </div> <!-- /col-in -->
+        </div> <!-- /col -->
+
+    </div> <!-- /page-in -->
+    </div> <!-- /page -->
+
+    <!-- Footer -->
+    <div id="footer">
+        <div id="top" class="noprint"><p><span class="noscreen">Back on top</span> <a href="#header" title="Back on top ^">^<span></span></a></p></div>
+        <hr class="noscreen" />
+        
+        <p id="createdby">created by <a>Noorain</a> <!-- DON? REMOVE, PLEASE! --></p>
+        <p id="copyright">&copy; 2018 <a href="mailto:nooraintajudin@gmail.com">My Name</a></p>
+    </div> <!-- /footer -->
+
+</div> <!-- /main -->
+
+</body>
+</html>

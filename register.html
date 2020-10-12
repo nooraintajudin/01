@@ -1,0 +1,68 @@
+<?php
+	session_start();
+	
+	// connect to database
+	$db = mysqli_connect("localhost", 'root', 'ain6314', 'diagnosis');
+	
+	if (isset($_POST['register_btn'])) {
+		$username = mysql_real_escape_string($_POST['username']);
+		$email = mysql_real_escape_string($_POST['email']);
+		$password = mysql_real_escape_string($_POST['password']);
+		$password2 = mysql_real_escape_string($_POST['password2']);
+		
+		if ($_password == $password2) {
+			// create user
+			$password = md5($password); //hash password before storing for security purposes
+			$sql = "INSERT INTO users(username, email, password) VALUES('$username', '$email', '$password')";
+			mysqli_query($db, $sql);
+			$_SESSION['message'] = "Your are now logged in";
+			$_SESSION['username'] = $username;
+			header("location: index.html"); //redirect to home page
+		)else{
+			$_SESSION['message'] = "The two passwords do not match";
+		}
+		
+		}
+	}
+	
+?>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PENDAFTARAN SISTEM DIAGNOSIS PPAT</title>
+</head>
+<body>
+<div class="header">
+	<h1>PENDAFTARAN SISTEM DIAGNOSIS PPAT</h1>
+</div>
+
+<form method="post" action="home.php">
+	<table>
+		<tr>
+			<td>NAMA PENGGUNA:</td>
+			<td><input type="text" name="username" class="textInput"></td>
+		</tr>
+		<tr>
+			<td>E-MEL:</td>
+			<td><input type="email" name="email" class="textInput"></td>
+		</tr>
+		<tr>
+			<td>KATA LALUAN:</td>
+			<td><input type="password" name="password" class="textInput"></td>
+		</tr>
+		<tr>
+			<td>KATA LALUAN(*sekali lagi):</td>
+			<td><input type="password" name="password2" class="textInput"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" name="register_btn" value="Register"></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
