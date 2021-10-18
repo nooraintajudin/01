@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "ain6314";
-$dbname = "diagnosis";
+$username = "sgtrave1_person";
+$password = "fakhari88";
+$dbname = "sgtrave1_user";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,27 +11,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT no_tentera, kata_laluan, emel, kategori FROM users";
+$sql = "SELECT Name, No, Email, Subject FROM person";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) 
-{
+if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) 
-    {
-        echo "No_Tentera: " . $row["no_tentera"]. " - Kata Laluan: " . $row["kata_laluan"]. " - E-mel: " . $row["emel"]. " - Kategori: " . $row["kategori"]."<br>";
-		
+    while($row = $result->fetch_assoc()) {
+        echo "Name: " . $row["Name"]. " - No: " . $row["No"]. " " . $row["Email"]. " -Subject: " . $row["Subject"]. "<br>";
     }
-} 
-
-else
- 
-    {
+} else {
     echo "0 results";
-    }
-    
-    
+}
 $conn->close();
-
 ?>
-
